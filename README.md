@@ -13,6 +13,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |title|text|null: false|
+|image|text|null: false|
 |category|text|null: false|
 |price|text|null: false|
 |text|text|null: false|
