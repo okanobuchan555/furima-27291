@@ -35,6 +35,6 @@
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|address|text|null: false|
 ### Association
 - belongs_to :buyer
