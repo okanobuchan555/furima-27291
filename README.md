@@ -3,12 +3,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |username|string|null: false|
-|email|string|unique: true|
+|email|string|null: false, unique: true|
 |encrypted_password|string|null: false|
-|encrypted_password(confirmation)|string|null: false|
 |name1|string|null: false|
 |name2|string|null: false|
-|birthday|string|null: false|
+|birthday|date|null: false|
 ### Association
 - has_many :items
 - has_many :buyers
@@ -16,13 +15,13 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|text|null: false|
+|item|string|null: false|
 |description|text|null: false|
 |category_id|integer|null: false|
-|condition|text|null: false|
-|charge|text|null: false|
-|area_of_origin|text|null: false|
-|number_of_days|text|null: false|
+|condition_id|integer|null: false|
+|charge_id|integer|null: false|
+|area_of_origin_id|integer|null: false|
+|number_of_days_id|integer|null: false|
 |price|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
@@ -35,8 +34,8 @@
 |creditcard_number|text|null: false|
 |effective_date|text|null: false|
 |security_code|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 - belongs_to :user
@@ -45,11 +44,12 @@
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|text|null: false|
-|state_province_region|text|null: false|
-|city_town_village|text|null: false|
-|address_line1|text|null: false|
-|address_line2|text|null: false|
-|phone_number|text|null: false|
+|postal_code|string|null: false|
+|area_of_origin_id|integer|null: false|
+|city_town_village|string|null: false|
+|address_line1|string|null: false|
+|address_line2|string| |
+|phone_number|string|null: false|
+|buyer_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :buyer
