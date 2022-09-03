@@ -1,24 +1,54 @@
-# README
+# FURIMA-27291 DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|username|string|null: false|
+|email|string|null: false, unique: true|
+|encrypted_password|string|null: false|
+|name1_1|string|null: false|
+|name1_2|string|null: false|
+|name2_1|string|null: false|
+|name2_2|string|null: false|
+|birthday|date|null: false|
+### Association
+- has_many :items
+- has_many :buyers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item|string|null: false|
+|description|text|null: false|
+|category_id|integer|null: false|
+|condition_id|integer|null: false|
+|charge_id|integer|null: false|
+|area_of_origin_id|integer|null: false|
+|number_of_days_id|integer|null: false|
+|price|integer|null: false|
+|user|references|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- has_one :buyer
 
-Things you may want to cover:
+## buyersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+### Association
+- belongs_to :item
+- belongs_to :user
+- has_one :address
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|postal_code|string|null: false|
+|area_of_origin_id|integer|null: false|
+|city_town_village|string|null: false|
+|address_line1|string|null: false|
+|address_line2|string| |
+|phone_number|string|null: false|
+|buyer|references|null: false, foreign_key: true|
+### Association
+- belongs_to :buyer
