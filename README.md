@@ -5,11 +5,11 @@
 |username|string|null: false|
 |email|string|null: false, unique: true|
 |encrypted_password|string|null: false|
-|name1_1|string|null: false|
-|name1_2|string|null: false|
-|name2_1|string|null: false|
-|name2_2|string|null: false|
-|birthday|date|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birth_day|date|null: false|
 ### Association
 - has_many :items
 - has_many :buyers
