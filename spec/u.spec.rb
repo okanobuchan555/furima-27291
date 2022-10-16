@@ -42,7 +42,7 @@ describe User do
         expect(user.errors[:last_name]).to include("を入力してください")
       end
 
-      it "family_name_kanaがない場合は登録できないこと" do
+      it "last_name_kanaがない場合は登録できないこと" do
         user = build(:user, last_name_kana: nil)
         user.valid?
         expect(user.errors[:last_name_kana]).to include("を入力してください")
