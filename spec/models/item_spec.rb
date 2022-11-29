@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
   describe "商品出品機能" do
     context '内容に問題ない場合' do
       it '全て正常' do
-      expect(@item).to be_valid
+        expect(@item).to be_valid
       end
       it 'ログイン状態のユーザーのみ、商品出品ページへ遷移できること' do
         @item = FactoryBot.create(:user)
