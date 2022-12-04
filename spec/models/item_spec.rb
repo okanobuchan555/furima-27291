@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
+    @user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
     @item.image = fixture_file_upload('app/assets/images/star.png')
   end
@@ -53,7 +54,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Shipping fee status can't be blank"
       end
 
-      it '発売元の地域についての情報が空では出品できない' do
+      it '発送元の地域についての情報が空では出品できない' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
@@ -87,6 +88,42 @@ RSpec.describe Item, type: :model do
         @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
+      end
+
+      it 'カテゴリーに「---」が選択されている場合は出品できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Category must be other than 1"
+      end
+
+      it '商品の状態に「---」が選択されている場合は出品できない' do
+        @item.sales_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Sales status must be other than 1"
+      end
+
+      it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @item.shipping_fee_status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Shipping fee status must be other than 1"
+      end
+
+      it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Prefecture must be other than 1"
+      end
+
+      it '発送までの日数に「---」が選択されている場合は出品できない' do
+        @item.scheduled_delivery_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Scheduled delivery must be other than 1"
+      end
+
+      it 'ユーザーが紐付いていなければ投稿できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
       end
 
     end

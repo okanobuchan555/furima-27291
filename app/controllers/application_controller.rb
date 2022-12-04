@@ -8,14 +8,6 @@ class ApplicationController < ActionController::Base
      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]  # 環境変数を読み込む記述に変更
     end
   end
-
-  def after_sign_in_path_for(resource)
-    new_item_path
-  end
-
-  def after_sign_out_path_for(resource)
-    root_path
-  end
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_day])
