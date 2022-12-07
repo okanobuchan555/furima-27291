@@ -138,13 +138,13 @@
               <%#= item.item_name %><br>
             </h3>
             <div class='item-price'>
-              <span><%#= item.price %>円<br>(税込み)<br><%= '配送料負担' %></span>
-              <div class='star-btn'>
+              <%# <span><%= item.price %>円<br>(税込み)<br><%= '配送料負担' %></span> %>
+              <%# <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
+                <%# <span class='star-count'>0</span>
               </div>
             </div>
-          </div>
+          </div> %>
         <%# end %>
         <%= link_to "#" do %>
         <div class='item-img-content'>
