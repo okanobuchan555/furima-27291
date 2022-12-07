@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.create(:user)
     @item = FactoryBot.build(:item)
-    @item.image = fixture_file_upload('app/assets/images/star.png')
   end
   describe "商品出品機能" do
     context '内容に問題ない場合' do
