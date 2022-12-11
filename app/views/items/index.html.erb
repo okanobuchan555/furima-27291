@@ -131,42 +131,31 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <%= link_to "#" do %>
-        <%# @items.each do |item| %>
+         <% @items.each do |item| %>
           <div class='item-img-content'>
-          <%#= image_tag item.image, class: "item-img" if item.image.present? %><br> 
+          <%= image_tag item.image, class: "item-img" if item.image.present? %><br>
+
           <%# 商品が売れていればsold outを表示しましょう %>
-          <%# item.purchase.present? %>
+          <%# <% if item.purchase.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <%# //商品が売れていればsold outを表示しましょう %>
-          <%# end %>
+          <%# <% end %>
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%#= item.item_name %><br>
+              <%= item.item_name %><br>
             </h3>
             <div class='item-price'>
-               <span><%#= item.price %>円<br>(税込み)<br><%= '配送料負担' %></span>
-              <%# <div class='star-btn'>
+               <span><%= item.price %>円<br>(税込み)<br><%= '配送料負担' %></span>
+              <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
-                <%# <span class='star-count'>0</span>
+                <span class='star-count'>0</span>
               </div>
             </div>
-          </div> %>
-        <%# end %>
-        <%#= link_to "#" do %>
-        <%# <div class='item-img-content'> %>
-          <%#= image_tag "item-sample.png", class: "item-img" %>
-
-        <%# </div> %>
-
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
           </div>
-        </div>
+         <% end %>
         <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
