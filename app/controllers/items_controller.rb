@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :authenticate_user!, except: [:index]
   # before_action :set_item, only: [:edit, :update]
 
   def index
-    @items = Item.all
+    @items = Item.includes(:user).order("created_at DESC")
   end
 
   def new
