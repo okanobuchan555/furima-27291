@@ -18,12 +18,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |item|string|null: false|
-|description|text|null: false|
+|content|text|null: false|
 |category_id|integer|null: false|
-|condition_id|integer|null: false|
-|charge_id|integer|null: false|
-|area_of_origin_id|integer|null: false|
-|number_of_days_id|integer|null: false|
+|sales_status_id|integer|null: false|
+|shipping_fee_status_id|integer|null: false|
+|prefecture_id|string|null: false|
+|scheduled_delivery_id|integer|null: false|
 |price|integer|null: false|
 |user|references|null: false, foreign_key: true|
 ### Association
