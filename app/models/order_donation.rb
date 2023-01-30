@@ -7,6 +7,7 @@ class OrderDonation
     validates :city, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width characters." }
     validates :phone_number, numericality: { with: /\A\d{10,11}\z/, only_integer: true, messege: "is not a number" } 
     validates :house_number
+    validates :token
   end
 
   def save

@@ -57,5 +57,10 @@ RSpec.describe OrderDonation, type: :model do
       @order_donation.valid?
       expect(@order_donation.errors.full_messages).to include('Phone number is not a number')
     end
+    it "tokenが空では登録できないこと" do
+      @order_donation.token = nil
+      @order_donation.valid?
+      expect(@order_donation.errors.full_messages).to include("Token can't be blank")
+    end
   end
 end
