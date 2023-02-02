@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
 
   def index
     @order_donation = OrderDonation.new
-    if user_signed_in?
-      redirect_to root_path unless current_user.id == @order_donation.user_id
-    else
-      redirect_to new_user_session_path
+    if current_user.id == @item.user_id 
+      redirect_to root_path
+    elsif @item.order.present?
+      redirect_to root_path
     end
   end
 
