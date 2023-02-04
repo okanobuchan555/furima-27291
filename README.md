@@ -28,9 +28,9 @@
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_one :buyer
+- has_one :order
 
-## buyersテーブル
+## ordersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
@@ -44,11 +44,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
-|area_of_origin_id|integer|null: false|
-|city_town_village|string|null: false|
-|address_line1|string|null: false|
-|address_line2|string| |
+|prefecture_id|integer|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
+|building_name|string| |
 |phone_number|string|null: false|
-|buyer|references|null: false, foreign_key: true|
+|order|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :buyer
+- belongs_to :order

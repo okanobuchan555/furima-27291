@@ -12,5 +12,5 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee_status
   belongs_to :prefecture
   belongs_to :scheduled_delivery
-  # has_one :buyer, dependent: :destroy
+  has_one :order, dependent: :destroy
 end
