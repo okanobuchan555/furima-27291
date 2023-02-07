@@ -71,3 +71,7 @@ gem 'active_hash'
 gem 'mini_magick'
 
 gem 'payjp'
+
+group :production do
+  gem 'pg'
+end
